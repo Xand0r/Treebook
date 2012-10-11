@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="navbar navbar-fixed-top">
+	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
 				<a href="#" class="brand">Treebook</a>
@@ -27,8 +27,18 @@
 		</div>
 	</div>
 	<div class="container">
-		<p class="notice"><%= notice %></p>
-		<p class="alert"><%= alert %></p>
+		<% if flash[:notice] %>
+			<div class="alert alert-success">
+				<button class="close" data-dismiss="alert">x</button>
+				<%= flash[:notice] %>
+			</div>
+		<% end %>
+		<% if flash[:alert] %>
+			<div class="alert alert-error">
+				<button class="close" data-dismiss="alert">x</button>
+				<%= flash[:alert] %>
+			</div>
+		<% end %>
 		<%= yield %>
 	</div>
 </body>
